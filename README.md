@@ -1,2 +1,1 @@
-# DZ-Admin
-Modern FiveM Admin-Panel [ESX]
+24.09 👏
