@@ -129,6 +129,24 @@ AddEventHandler('playerConnecting', function(user, kickr, deferrals)
     else deferrals.done() end
 end)
 
+RegisterCommand("unban", function(source, args)
+    local src = source
+    local Player = ESX.GetPlayerFromId(src)
+    local Target = args[1]
+    if Player ~= nil then
+        if Player.getGroup() == "admin" or Player.getGroup() == "superadmin" then
+            if Bans[Target] then
+                Bans[Target] = nil
+                val = Bans
+                SaveResourceFile(GetCurrentResourceName(), "server/bans.json", json.encode(val), -1)
+                LoadBans()
+            else
+                print("player isnt banned")
+            end
+        end
+    end
+end)
+
 function DiscordLogging(source, PlayerName, Title, Desc, Color)
     local PInfo = FetchInformation(source)
     local embed = {
