@@ -119,6 +119,7 @@ AddEventHandler('playerDropped', function () TriggerClientEvent("dz-admin:client
 AddEventHandler('playerConnecting', function(user, kickr, deferrals)
     LoadBans()
     deferrals.defer()
+    Wait(0)
     deferrals.update("[dz-admin | dz-security.live] Welcome to "..DZ.ServerName..", Your info is being checked.")
     local src = source
     local Identifier = GetPlayerIdentifiers(src)[1]
