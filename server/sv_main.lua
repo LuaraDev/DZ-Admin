@@ -117,11 +117,12 @@ end
 LoadBans()
 AddEventHandler('playerDropped', function () TriggerClientEvent("dz-admin:client:updatePlayers", -1) end)
 AddEventHandler('playerConnecting', function(user, kickr, deferrals)
+    local src = source
     LoadBans()
     deferrals.defer()
     Wait(0)
     deferrals.update("[dz-admin | dz-security.live] Welcome to "..DZ.ServerName..", Your info is being checked.")
-    local src = source
+
     local Identifier = GetPlayerIdentifiers(src)[1]
     if Bans[Identifier] then
         deferrals.done("[dz-admin | dz-security.live] You're banned from this server for reason: "..Bans[Identifier]["reason"])
